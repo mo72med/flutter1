@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import '../../Componant/ButtonWidget.dart';
 import '../../Componant/textFormField.dart';
 
-class SignupPage extends StatelessWidget {
-  const SignupPage({super.key});
+class SignInPage extends StatelessWidget {
+  const SignInPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class SignupPage extends StatelessWidget {
         elevation: 0.0,
         bottom: const PreferredSize(
           preferredSize: Size.fromHeight(100.0),
-          child: SignUpHeaderWidget(),
+          child: SignInHeaderWidget(),
         ),
       ),
       body: Padding(
@@ -27,17 +27,15 @@ class SignupPage extends StatelessWidget {
           child: Column(
             children: [
               TextFieldWidget(
-                  controller: TextEditingController(), hint: 'Name'),
-              TextFieldWidget(
                   controller: TextEditingController(), hint: 'Email'),
               TextFieldWidget(
                   controller: TextEditingController(), hint: 'Password'),
-              const TextButtonWidget(),
+              const ForgotButtonWidget(),
               const SizedBox(height: 30.0),
-              const ButtonWidget(title: 'SIGNUP'),
-              const SizedBox(height: 30.0),
+              const ButtonWidget(title: 'LOGIN'),
+              const SizedBox(height: 50.0),
               const Text('Or sign up with social account'),
-              const SocialSignUpWidget()
+              const SocialSignInWidget()
             ],
           ),
         ),
@@ -46,8 +44,8 @@ class SignupPage extends StatelessWidget {
   }
 }
 
-class SignUpHeaderWidget extends StatelessWidget {
-  const SignUpHeaderWidget({
+class SignInHeaderWidget extends StatelessWidget {
+  const SignInHeaderWidget({
     super.key,
   });
 
@@ -61,7 +59,7 @@ class SignUpHeaderWidget extends StatelessWidget {
             padding: const EdgeInsets.only(bottom: 50.0),
             child: Row(children: const [
               Text(
-                'Sign Up',
+                'Login',
                 style: TextStyle(
                     fontSize: 34.0,
                     color: Colors.black,
@@ -75,8 +73,8 @@ class SignUpHeaderWidget extends StatelessWidget {
   }
 }
 
-class TextButtonWidget extends StatelessWidget {
-  const TextButtonWidget({
+class ForgotButtonWidget extends StatelessWidget {
+  const ForgotButtonWidget({
     super.key,
   });
 
@@ -88,7 +86,7 @@ class TextButtonWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.end,
           children: const [
             Text(
-              'Already have an account ? ',
+              'Forgot your Password ? ',
               style: TextStyle(color: Color(0xff222222)),
             ),
             Icon(
@@ -100,8 +98,8 @@ class TextButtonWidget extends StatelessWidget {
   }
 }
 
-class SocialSignUpWidget extends StatelessWidget {
-  const SocialSignUpWidget({
+class SocialSignInWidget extends StatelessWidget {
+  const SocialSignInWidget({
     super.key,
   });
 
