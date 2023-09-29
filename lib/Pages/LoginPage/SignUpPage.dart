@@ -15,27 +15,9 @@ class SignupPage extends StatelessWidget {
           color: Colors.black,
         ),
         elevation: 0.0,
-        bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(80.0),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0),
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10.0),
-                  child: Row(children: const [
-                    Text(
-                      'Sign Up',
-                      style: TextStyle(
-                          fontSize: 34.0,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ]),
-                ),
-              ],
-            ),
-          ),
+        bottom: const PreferredSize(
+          preferredSize: Size.fromHeight(100.0),
+          child: SignUpHeaderWidget(),
         ),
       ),
       body: Padding(
@@ -44,55 +26,116 @@ class SignupPage extends StatelessWidget {
           child: Column(
             children: [
               TextFieldWidget(
-                  controller: TextEditingController(), Hint: 'Name'),
+                  controller: TextEditingController(), hint: 'Name'),
               TextFieldWidget(
-                  controller: TextEditingController(), Hint: 'Email'),
+                  controller: TextEditingController(), hint: 'Email'),
               TextFieldWidget(
-                  controller: TextEditingController(), Hint: 'Password'),
-              TextButton(
-                  onPressed: () {},
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: const [
-                      Text(
-                        'Already have an account ? ',
-                        style: TextStyle(color: Color(0xff222222)),
-                      ),
-                      Icon(
-                        Icons.arrow_right_alt,
-                        color: Color(0xffDB3022),
-                      )
-                    ],
-                  )),
+                  controller: TextEditingController(), hint: 'Password'),
+              const TextButtonWidget(),
               const SizedBox(height: 30.0),
-              Container(
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20.0),
-                    color: const Color(0xffDB3022)),
-                width: Size.infinite.width,
-                height: 48.0,
-                child: const Center(
-                    child: Text(
-                  'SIGN UP',
-                  style: TextStyle(
-                      color: Colors.white, fontWeight: FontWeight.bold),
-                )),
-              ),
+              const SignUpButtonWidget(),
               const SizedBox(height: 30.0),
               const Text('Or sign up with social account'),
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Image.asset('assets/images/facebook.png'),
-                    Image.asset('assets/images/google.png'),
-                  ],
-                ),
-              )
+              const SocialSignUpWidget()
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class SignUpHeaderWidget extends StatelessWidget {
+  const SignUpHeaderWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(bottom: 50.0),
+            child: Row(children: const [
+              Text(
+                'Sign Up',
+                style: TextStyle(
+                    fontSize: 34.0,
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold),
+              ),
+            ]),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class TextButtonWidget extends StatelessWidget {
+  const TextButtonWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return TextButton(
+        onPressed: () {},
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: const [
+            Text(
+              'Already have an account ? ',
+              style: TextStyle(color: Color(0xff222222)),
+            ),
+            Icon(
+              Icons.arrow_right_alt,
+              color: Color(0xffDB3022),
+            )
+          ],
+        ));
+  }
+}
+
+class SignUpButtonWidget extends StatelessWidget {
+  const SignUpButtonWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20.0),
+          color: const Color(0xffDB3022)),
+      width: Size.infinite.width,
+      height: 48.0,
+      child: const Center(
+          child: Text(
+        'SIGN UP',
+        style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+      )),
+    );
+  }
+}
+
+class SocialSignUpWidget extends StatelessWidget {
+  const SocialSignUpWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(10.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Image.asset('assets/images/facebook.png'),
+          Image.asset('assets/images/google.png'),
+        ],
       ),
     );
   }
