@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../Componant/ButtonWidget.dart';
-import '../../Componant/textFormField.dart';
+import '../../Componant/textFormFieldWidget.dart';
 
 class SignupPage extends StatelessWidget {
   const SignupPage({super.key});
@@ -26,15 +26,16 @@ class SignupPage extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              TextFieldWidget(
-                  controller: TextEditingController(), hint: 'Name'),
-              TextFieldWidget(
-                  controller: TextEditingController(), hint: 'Email'),
-              TextFieldWidget(
-                  controller: TextEditingController(), hint: 'Password'),
+              TextFieldWidget(hint: 'Name'),
+              TextFieldWidget(hint: 'Email'),
+              TextFieldWidget(hint: 'Password'),
               const TextButtonWidget(),
               const SizedBox(height: 30.0),
-              const ButtonWidget(title: 'SIGNUP'),
+              ButtonWidget(
+                title: 'SIGNUP',
+                buttonBorder: false,
+                ontap: () {},
+              ),
               const SizedBox(height: 30.0),
               const Text('Or sign up with social account'),
               const SocialSignUpWidget()

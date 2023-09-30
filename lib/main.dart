@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'Pages/LoginPage/ForgotPage.dart';
+
+import 'Pages/Visual SearchPages/FindingPage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const ForgotPage(),
+      home: const FindingPage(),
     );
   }
 }
