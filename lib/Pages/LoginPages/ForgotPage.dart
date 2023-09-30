@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../Componant/ButtonWidget.dart';
-import '../../Componant/textFormField.dart';
+import '../../Componant/textFormFieldWidget.dart';
 
 class ForgotPage extends StatelessWidget {
   const ForgotPage({super.key});
@@ -28,10 +28,13 @@ class ForgotPage extends StatelessWidget {
             children: [
               const Text(
                   'Please, enter your email address. You will receive a link to create a new password via email.'),
-              TextFieldWidget(
-                  controller: TextEditingController(), hint: 'Email'),
+              TextFieldWidget(hint: 'Email'),
               const SizedBox(height: 30.0),
-              const ButtonWidget(title: 'SEND'),
+              ButtonWidget(
+                title: 'SEND',
+                buttonBorder: false,
+                ontap: () {},
+              ),
             ],
           ),
         ),
