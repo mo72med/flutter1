@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../Componant/BackArrowWidget.dart';
 import '../../Componant/ButtonWidget.dart';
 
 class VisualSearchPage extends StatelessWidget {
@@ -10,7 +11,7 @@ class VisualSearchPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0.0,
-        leading: const Icon(Icons.arrow_back_ios_new, color: Colors.black),
+        leading: BackArrowWidget(ontap: () {}),
         centerTitle: true,
         title: const Text(
           'Visual search',

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'Pages/Visual SearchPages/FindingPage.dart';
+import 'Pages/CategoriesPages/categoriesPage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +14,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const FindingPage(),
+      home: const CategoriesPages(),
     );
   }
 }
