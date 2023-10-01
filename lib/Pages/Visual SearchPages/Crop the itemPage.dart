@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../Componant/BackArrowWidget.dart';
+
 class CropTheItemPage extends StatelessWidget {
   const CropTheItemPage({super.key});
 
@@ -9,7 +11,7 @@ class CropTheItemPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0.0,
-        leading: const Icon(Icons.arrow_back_ios_new, color: Colors.black),
+        leading: BackArrowWidget(ontap: () {}),
         centerTitle: true,
         title: const Text(
           'Crop the item',

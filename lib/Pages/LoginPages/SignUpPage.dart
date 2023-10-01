@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../Componant/BackArrowWidget.dart';
 import '../../Componant/ButtonWidget.dart';
 import '../../Componant/textFormFieldWidget.dart';
 
@@ -11,10 +12,7 @@ class SignupPage extends StatelessWidget {
       backgroundColor: const Color(0xfff5fefd),
       appBar: AppBar(
         backgroundColor: const Color(0xfff5fefd),
-        leading: const Icon(
-          Icons.arrow_back_ios_new,
-          color: Colors.black,
-        ),
+        leading: BackArrowWidget(ontap: () {}),
         elevation: 0.0,
         bottom: const PreferredSize(
           preferredSize: Size.fromHeight(100.0),

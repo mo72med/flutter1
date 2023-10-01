@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 
+import '../../Componant/BackArrowWidget.dart';
+
 class TakingPhotoPage extends StatefulWidget {
   const TakingPhotoPage({super.key});
 
@@ -24,7 +26,7 @@ class _TakingPhotoPageState extends State<TakingPhotoPage> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0.0,
-        leading: const Icon(Icons.arrow_back_ios_new, color: Colors.black),
+        leading: BackArrowWidget(ontap: () {}),
         centerTitle: true,
         title: const Text(
           'Search by taking a photo',
