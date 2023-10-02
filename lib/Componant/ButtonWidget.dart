@@ -8,7 +8,7 @@ class ButtonWidget extends StatelessWidget {
   ButtonWidget({
     required this.title,
     this.color = const Color(0xffDB3022),
-    required this.buttonBorder,
+    this.buttonBorder = false,
     required this.ontap,
     super.key,
   });
