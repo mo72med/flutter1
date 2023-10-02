@@ -83,15 +83,14 @@ class TapBarViewWidget extends StatelessWidget {
     return Expanded(
       child: TabBarView(children: [
         SingleChildScrollView(
-          child: Column(
-            children: const [
-              MainCardWidget(),
-              CardListWidget(),
-            ],
-          ),
-        ),
+            child: Column(
+          children: const [
+            MainCardWidget(),
+            CardListWidget(),
+          ],
+        )),
         Container(color: Colors.red),
-        Container(color: Colors.green)
+        Container(color: Colors.green),
       ]),
     );
   }
