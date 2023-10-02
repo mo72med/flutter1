@@ -39,7 +39,7 @@ class _CategoriesPagesState extends State<CategoriesPages> {
           leading: BackArrowWidget(ontap: () {}),
           title: const TitleWidget(),
           centerTitle: true,
-          actions: const [SearchButtonnWidget()],
+          actions: const [SearchButtonWidget()],
         ),
         body: Column(
           children: const [
@@ -83,22 +83,21 @@ class TapBarViewWidget extends StatelessWidget {
     return Expanded(
       child: TabBarView(children: [
         SingleChildScrollView(
-          child: Column(
-            children: const [
-              MainCardWidget(),
-              CardListWidget(),
-            ],
-          ),
-        ),
+            child: Column(
+          children: const [
+            MainCardWidget(),
+            CardListWidget(),
+          ],
+        )),
         Container(color: Colors.red),
-        Container(color: Colors.green)
+        Container(color: Colors.green),
       ]),
     );
   }
 }
 
-class SearchButtonnWidget extends StatelessWidget {
-  const SearchButtonnWidget({
+class SearchButtonWidget extends StatelessWidget {
+  const SearchButtonWidget({
     super.key,
   });
 
@@ -134,10 +133,10 @@ class CardListWidget extends StatelessWidget {
 }
 
 class CardItemWidget extends StatelessWidget {
-  int? index;
+  final int index;
 
-  CardItemWidget({
-    this.index,
+  const CardItemWidget({
+    required this.index,
     super.key,
   });
 
@@ -152,7 +151,7 @@ class CardItemWidget extends StatelessWidget {
           Expanded(
             child: Padding(
               padding: const EdgeInsets.only(left: 20.0),
-              child: Text('${womanCategoriesId[index]?.title}',
+              child: Text(womanCategoriesId[index].title,
                   style: const TextStyle(color: Colors.black, fontSize: 18.0)),
             ),
           ),
@@ -162,7 +161,7 @@ class CardItemWidget extends StatelessWidget {
                   bottomRight: Radius.circular(10.0),
                   topRight: Radius.circular(10.0)),
               child: Image.asset(
-                'assets/images/${womanCategoriesId[index]?.image}',
+                'assets/images/${womanCategoriesId[index].image}',
                 fit: BoxFit.cover,
                 height: 100,
               ),
