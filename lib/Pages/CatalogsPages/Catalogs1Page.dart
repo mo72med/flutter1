@@ -12,7 +12,7 @@ class CatalogPage extends StatefulWidget {
 
 class _CatalogPageState extends State<CatalogPage> {
   int _onSelectedItem = 0;
-  View view = View.list;
+  View view = View.grid;
 
   List<BottomNavigationBarItem> bottomBarItems = const [
     BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
@@ -64,7 +64,11 @@ class _CatalogPageState extends State<CatalogPage> {
               )),
         ),
         body: Column(
-          children: [TapBarViewWidget()],
+          children: [
+            TapBarViewWidget(
+              view: view,
+            )
+          ],
         ),
         bottomNavigationBar: BottomNavigationBar(
           items: bottomBarItems,
@@ -82,8 +86,10 @@ class _CatalogPageState extends State<CatalogPage> {
 }
 
 class TapBarViewWidget extends StatelessWidget {
+  final View view;
   const TapBarViewWidget({
     super.key,
+    required this.view,
   });
 
   @override
@@ -91,7 +97,11 @@ class TapBarViewWidget extends StatelessWidget {
     return Expanded(
       child: TabBarView(children: [
         SingleChildScrollView(
-            child: Column(children: const [CardListWidget()])),
+            child: Column(children: [
+          CardListWidget(
+            view: view,
+          )
+        ])),
         Container(color: Colors.red),
         Container(color: Colors.green),
         Container(color: Colors.green),
@@ -187,10 +197,10 @@ class TabBarListWidget extends StatelessWidget {
         indicator: BoxDecoration(),
         labelPadding: EdgeInsets.symmetric(horizontal: 5.0),
         tabs: [
-          TabItemWidget(TabTitle: 'T-shirts'),
-          TabItemWidget(TabTitle: 'Crop tops'),
-          TabItemWidget(TabTitle: 'Sleeveless'),
-          TabItemWidget(TabTitle: 'Shirts'),
+          TabItemWidget(tabTitle: 'T-shirts'),
+          TabItemWidget(tabTitle: 'Crop tops'),
+          TabItemWidget(tabTitle: 'Sleeveless'),
+          TabItemWidget(tabTitle: 'Shirts'),
         ]);
   }
 }
@@ -215,10 +225,10 @@ class AppBarTitleWidget extends StatelessWidget {
 }
 
 class TabItemWidget extends StatelessWidget {
-  final String TabTitle;
+  final String tabTitle;
   const TabItemWidget({
     super.key,
-    required this.TabTitle,
+    required this.tabTitle,
   });
 
   @override
@@ -229,7 +239,7 @@ class TabItemWidget extends StatelessWidget {
         width: 100,
         decoration: BoxDecoration(
             color: Colors.black, borderRadius: BorderRadius.circular(50.0)),
-        child: Center(child: Text(TabTitle)),
+        child: Center(child: Text(tabTitle)),
       ),
     );
   }
@@ -253,8 +263,10 @@ class SearchButtonWidget extends StatelessWidget {
 }
 
 class CardListWidget extends StatelessWidget {
+  final View view;
   const CardListWidget({
     super.key,
+    required this.view,
   });
 
   @override
@@ -262,46 +274,133 @@ class CardListWidget extends StatelessWidget {
     return SizedBox(
       height: 400,
       width: 400,
-      child: ListView.builder(
-          itemCount: womanCategoriesId.length,
-          itemBuilder: (context, index) {
-            return CardItemListWidget(index: index);
-          }),
+      child: view == View.list
+          ? const ListViewCardWidget()
+          : const GridViewCardWidget(),
     );
   }
 }
 
-class CardItemListWidget extends StatelessWidget {
-  final int index;
-
-  const CardItemListWidget({
-    required this.index,
+class GridViewCardWidget extends StatelessWidget {
+  const GridViewCardWidget({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 10.0),
+    return GridView.builder(
+        itemCount: womanCategoriesId.length,
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          childAspectRatio: 3 / 4,
+          crossAxisCount: 2,
+        ),
+        itemBuilder: (context, index) {
+          return Padding(
+            padding: const EdgeInsets.all(5.0),
+            child: Card(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.0)),
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      ImageGridItemCardWidget(index: index),
+                      const TitleGridItemCardWidget()
+                    ])),
+          );
+        });
+  }
+}
+
+class ImageGridItemCardWidget extends StatelessWidget {
+  final int index;
+  const ImageGridItemCardWidget({
+    super.key,
+    required this.index,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      flex: 3,
       child: Stack(
-        alignment: AlignmentDirectional.bottomEnd,
+        alignment: AlignmentDirectional.topStart,
         children: [
-          Card(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8.0)),
-              child: Row(children: [
-                ImageItemCardWidget(index: index),
-                const TitleItemCardWidget()
-              ])),
-          const FavoriteItemCardWidget(),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(8.0),
+            child: Image.asset(
+              'assets/images/${womanCategoriesId[index].image}',
+              fit: BoxFit.cover,
+              height: 170,
+            ),
+          ),
+          const Positioned(
+            bottom: 0.0,
+            right: 0.0,
+            child: FavoriteItemCardWidget(),
+          )
         ],
       ),
     );
   }
 }
 
-class ImageItemCardWidget extends StatelessWidget {
-  const ImageItemCardWidget({
+class TitleGridItemCardWidget extends StatelessWidget {
+  const TitleGridItemCardWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      flex: 1,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: const [
+          Icon(Icons.star, size: 11.0, color: Colors.amber),
+          Text('Sub Data',
+              style: TextStyle(color: Colors.grey, fontSize: 11.0)),
+          Text('Main Data',
+              style: TextStyle(color: Colors.black, fontSize: 16.0)),
+          Text('10\$', style: TextStyle(color: Colors.black, fontSize: 14.0)),
+        ],
+      ),
+    );
+  }
+}
+
+class ListViewCardWidget extends StatelessWidget {
+  const ListViewCardWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+        itemCount: womanCategoriesId.length,
+        itemBuilder: (context, index) {
+          return Padding(
+            padding: const EdgeInsets.only(top: 10.0),
+            child: Stack(
+              alignment: AlignmentDirectional.bottomEnd,
+              children: [
+                Card(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.0)),
+                    child: Row(children: [
+                      ImageListItemCardWidget(index: index),
+                      const TitleListItemCardWidget()
+                    ])),
+                const FavoriteItemCardWidget(),
+              ],
+            ),
+          );
+        });
+  }
+}
+
+class ImageListItemCardWidget extends StatelessWidget {
+  const ImageListItemCardWidget({
     super.key,
     required this.index,
   });
@@ -325,8 +424,8 @@ class ImageItemCardWidget extends StatelessWidget {
   }
 }
 
-class TitleItemCardWidget extends StatelessWidget {
-  const TitleItemCardWidget({
+class TitleListItemCardWidget extends StatelessWidget {
+  const TitleListItemCardWidget({
     super.key,
   });
 
@@ -370,7 +469,7 @@ class FavoriteItemCardWidget extends StatelessWidget {
               BoxShadow(
                 color: Colors.grey.withOpacity(0.4),
                 blurRadius: 4.0,
-                offset: Offset(0, 2),
+                offset: const Offset(0, 2),
               )
             ]),
         child: const Icon(
