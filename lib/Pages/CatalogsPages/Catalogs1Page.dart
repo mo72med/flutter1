@@ -104,7 +104,7 @@ class TapBarViewWidget extends StatelessWidget {
         ])),
         Container(color: Colors.red),
         Container(color: Colors.green),
-        Container(color: Colors.green),
+        Container(color: Colors.blue),
       ]),
     );
   }
@@ -133,12 +133,21 @@ class HeaderWidget extends StatelessWidget {
   }
 }
 
-class FiltersBarWidget extends StatelessWidget {
+class FiltersBarWidget extends StatefulWidget {
   final VoidCallback toggleFunction;
-  const FiltersBarWidget({
+
+  FiltersBarWidget({
     super.key,
     required this.toggleFunction,
   });
+
+  @override
+  State<FiltersBarWidget> createState() => _FiltersBarWidgetState();
+}
+
+class _FiltersBarWidgetState extends State<FiltersBarWidget> {
+  List<String> option = ['data1', 'data2', 'data3'];
+  String titleOption = '';
 
   @override
   Widget build(BuildContext context) {
@@ -149,11 +158,94 @@ class FiltersBarWidget extends StatelessWidget {
             icon: Icons.filter_list_sharp, text: 'filter', onPressed: () {}),
         FiltersTabItemWidget(
             icon: Icons.swap_vert_outlined,
-            text: 'Price: lowest to high',
-            onPressed: () {}),
+            text: titleOption,
+            onPressed: () => showModalBottomSheet(
+                shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(30.0),
+                  topRight: Radius.circular(30.0),
+                )),
+                context: context,
+                builder: (BuildContext context) => Padding(
+                      padding: const EdgeInsets.only(top: 10.0, bottom: 20),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            height: 8.0,
+                            alignment: Alignment.center,
+                            width: MediaQuery.of(context).size.width * 0.20,
+                            decoration: BoxDecoration(
+                                color: Colors.grey,
+                                borderRadius: BorderRadius.circular(20.0)),
+                          ),
+                          const SizedBox(height: 10.0),
+                          const Text('Sort by',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold)),
+                          const SizedBox(height: 30),
+                          BottomSheetItem(option: option),
+                        ],
+                      ),
+                    )).then((value) => setState(() => titleOption = value))),
         FiltersTabItemWidget(
-            icon: Icons.apps_sharp, text: ' ', onPressed: toggleFunction),
+            icon: Icons.apps_sharp,
+            text: ' ',
+            onPressed: widget.toggleFunction),
       ],
+    );
+  }
+}
+
+class BottomSheetItem extends StatefulWidget {
+  List<String> option;
+
+  BottomSheetItem({Key? key, required this.option}) : super(key: key);
+
+  @override
+  State<BottomSheetItem> createState() => _BottomSheetItemState();
+}
+
+class _BottomSheetItemState extends State<BottomSheetItem> {
+  static String selectOption = '';
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+        mainAxisSize: MainAxisSize.min,
+        children: widget.option
+            .map((element) => buildBottomSheetItem(context, element))
+            .toList());
+  }
+
+  Widget buildBottomSheetItem(BuildContext context, String options) {
+    final isSelected = selectOption == options;
+    final SelectedColor = isSelected ? Colors.red : Colors.grey;
+    final SelectedTitle = isSelected ? Colors.white : Colors.black;
+    return GestureDetector(
+      onDoubleTap: () => setState(() {
+        Navigator.pop(context, options);
+      }),
+      onTap: () => setState(() {
+        selectOption = options;
+        print(selectOption);
+      }),
+      child: Padding(
+        padding: const EdgeInsets.only(bottom: 8.0),
+        child: Container(
+          alignment: Alignment.centerLeft,
+          height: 48,
+          width: Size.infinite.width,
+          color: SelectedColor,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(options,
+                style: TextStyle(
+                    color: SelectedTitle, fontWeight: FontWeight.bold)),
+          ),
+        ),
+      ),
     );
   }
 }
@@ -272,8 +364,8 @@ class CardListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 400,
-      width: 400,
+      height: MediaQuery.of(context).size.height,
+      width: MediaQuery.of(context).size.width,
       child: view == View.list
           ? const ListViewCardWidget()
           : const GridViewCardWidget(),
