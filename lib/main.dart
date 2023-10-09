@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'Pages/CatalogsPages/Catalogs1Page.dart';
+
+import 'Pages/main_page/main_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: CatalogPage(),
+      home: MainPage(),
     );
   }
 }
