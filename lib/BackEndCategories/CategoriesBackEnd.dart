@@ -18,6 +18,26 @@ List<ChooseCategoryModel> chooseCategory = [
   ChooseCategoryModel(categoryTitle: 'Skirts'),
   ChooseCategoryModel(categoryTitle: 'Dresses'),
 ];
+List<MainTitleCategoryModel> titleCategory = [
+  MainTitleCategoryModel(
+      mainTitle: 'New',
+      subTitle: 'You’ve never seen it before!',
+      buttonTitle: 'View all'),
+  MainTitleCategoryModel(
+      mainTitle: 'sale',
+      subTitle: 'You’ve never seen it before!',
+      buttonTitle: 'View all'),
+];
+
+class MainTitleCategoryModel {
+  final String mainTitle;
+  final String subTitle;
+  final String buttonTitle;
+  MainTitleCategoryModel(
+      {required this.mainTitle,
+      required this.subTitle,
+      required this.buttonTitle});
+}
 
 class WomanCategoriesModel {
   String title;
