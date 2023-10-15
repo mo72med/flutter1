@@ -5,12 +5,18 @@ class ButtonWidget extends StatelessWidget {
   final bool buttonBorder;
   final GestureTapCallback? ontap;
   final double width;
+  final double height;
+  final Color colorText;
+  final Color colorBorder;
   Color color;
   ButtonWidget({
     required this.title,
     this.color = const Color(0xffDB3022),
     this.buttonBorder = false,
     this.width = double.infinity,
+    this.height = 48.0,
+    this.colorText = Colors.white,
+    this.colorBorder = Colors.white,
     required this.ontap,
     super.key,
   });
@@ -21,16 +27,15 @@ class ButtonWidget extends StatelessWidget {
       onTap: ontap,
       child: Container(
         decoration: BoxDecoration(
-            border: buttonBorder ? Border.all(color: Colors.white) : null,
+            border: buttonBorder ? Border.all(color: colorBorder) : null,
             borderRadius: BorderRadius.circular(20.0),
             color: color),
         width: width,
-        height: 48.0,
+        height: height,
         child: Center(
             child: Text(
           title,
-          style:
-              const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          style: TextStyle(color: colorText, fontWeight: FontWeight.bold),
         )),
       ),
     );
