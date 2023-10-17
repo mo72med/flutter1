@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'Pages/filters_page/filters_page.dart';
+import 'Pages/filters_page/filters_list_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const FiltersPage(),
+      home: const FiltersListPage(),
     );
   }
 }
