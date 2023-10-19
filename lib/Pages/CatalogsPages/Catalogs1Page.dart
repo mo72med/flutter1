@@ -136,7 +136,7 @@ class HeaderWidget extends StatelessWidget {
 class FiltersBarWidget extends StatefulWidget {
   final VoidCallback toggleFunction;
 
-  FiltersBarWidget({
+  const FiltersBarWidget({
     super.key,
     required this.toggleFunction,
   });
@@ -147,7 +147,7 @@ class FiltersBarWidget extends StatefulWidget {
 
 class _FiltersBarWidgetState extends State<FiltersBarWidget> {
   List<String> option = ['data1', 'data2', 'data3'];
-  String titleOption = '';
+  String titleOption = 'data1';
 
   @override
   Widget build(BuildContext context) {
@@ -173,9 +173,9 @@ class _FiltersBarWidgetState extends State<FiltersBarWidget> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Container(
-                            height: 8.0,
+                            height: 6.0,
                             alignment: Alignment.center,
-                            width: MediaQuery.of(context).size.width * 0.20,
+                            width: 60.0,
                             decoration: BoxDecoration(
                                 color: Colors.grey,
                                 borderRadius: BorderRadius.circular(20.0)),
@@ -200,16 +200,16 @@ class _FiltersBarWidgetState extends State<FiltersBarWidget> {
 }
 
 class BottomSheetItem extends StatefulWidget {
-  List<String> option;
+  final List<String> option;
 
-  BottomSheetItem({Key? key, required this.option}) : super(key: key);
+  const BottomSheetItem({Key? key, required this.option}) : super(key: key);
 
   @override
   State<BottomSheetItem> createState() => _BottomSheetItemState();
 }
 
 class _BottomSheetItemState extends State<BottomSheetItem> {
-  static String selectOption = '';
+  static String selectOption = 'data1';
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -221,8 +221,8 @@ class _BottomSheetItemState extends State<BottomSheetItem> {
 
   Widget buildBottomSheetItem(BuildContext context, String options) {
     final isSelected = selectOption == options;
-    final SelectedColor = isSelected ? Colors.red : Colors.grey;
-    final SelectedTitle = isSelected ? Colors.white : Colors.black;
+    final selectedColor = isSelected ? Colors.red : null;
+    final selectedTitle = isSelected ? Colors.white : Colors.black;
     return GestureDetector(
       onDoubleTap: () => setState(() {
         Navigator.pop(context, options);
@@ -237,12 +237,12 @@ class _BottomSheetItemState extends State<BottomSheetItem> {
           alignment: Alignment.centerLeft,
           height: 48,
           width: Size.infinite.width,
-          color: SelectedColor,
+          color: selectedColor,
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(options,
                 style: TextStyle(
-                    color: SelectedTitle, fontWeight: FontWeight.bold)),
+                    color: selectedTitle, fontWeight: FontWeight.bold)),
           ),
         ),
       ),
