@@ -146,8 +146,14 @@ class FiltersBarWidget extends StatefulWidget {
 }
 
 class _FiltersBarWidgetState extends State<FiltersBarWidget> {
-  List<String> option = ['data1', 'data2', 'data3'];
-  String titleOption = 'data1';
+  List<String> option = [
+    'Popular',
+    'Newest',
+    'Customer review',
+    'Price: lowest to high',
+    'Price: highest to low'
+  ];
+  String titleOption = 'Popular';
 
   @override
   Widget build(BuildContext context) {
@@ -209,7 +215,7 @@ class BottomSheetItem extends StatefulWidget {
 }
 
 class _BottomSheetItemState extends State<BottomSheetItem> {
-  static String selectOption = 'data1';
+  static String selectOption = 'Popular';
   @override
   Widget build(BuildContext context) {
     return Column(
