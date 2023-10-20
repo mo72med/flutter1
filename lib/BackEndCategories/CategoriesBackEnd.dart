@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 List<WomanCategoriesModel> womanCategoriesId = [
   WomanCategoriesModel(image: 'new.png', title: 'New'),
   WomanCategoriesModel(image: 'clothes.png', title: 'clothes'),
@@ -48,4 +50,10 @@ class WomanCategoriesModel {
 class ChooseCategoryModel {
   String categoryTitle;
   ChooseCategoryModel({required this.categoryTitle});
+}
+
+class ColorModel {
+  String colorTitle;
+  Color color;
+  ColorModel({required this.colorTitle, required this.color});
 }
