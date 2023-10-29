@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'Pages/my_bag_pages/payment_method.dart';
+import 'Pages/profile_pages/setting_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const PaymentMethodPage(),
+      home: const SettingPage(),
     );
   }
 }
