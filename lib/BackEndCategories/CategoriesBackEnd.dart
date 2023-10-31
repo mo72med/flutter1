@@ -8,7 +8,7 @@ List<WomanCategoriesModel> womanCategoriesId = [
 ];
 
 List<ChooseCategoryModel> chooseCategory = [
-  ChooseCategoryModel(categoryTitle: 'Shirts & Blouses'),
+  ChooseCategoryModel(categoryTitle: 'Tops'),
   ChooseCategoryModel(categoryTitle: 'Shirts & Blouses'),
   ChooseCategoryModel(categoryTitle: 'Cardigans & Sweaters'),
   ChooseCategoryModel(categoryTitle: 'Knitwear'),

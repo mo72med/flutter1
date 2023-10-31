@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter1/routes/router_names.dart';
+
 import '../../BackEndCategories/CategoriesBackEnd.dart';
 import '../../Componant/BackArrowWidget.dart';
 import '../../Componant/ButtonWidget.dart';
+import '../../routes/router.dart';
 
 class Categories2Pages extends StatefulWidget {
   const Categories2Pages({super.key});
@@ -41,15 +44,15 @@ class _Categories2PagesState extends State<Categories2Pages> {
         actions: const [SearchButtonWidget()],
       ),
       body: Padding(
-        padding: const EdgeInsets.only(top: 10.0, right: 15.0, left: 15.0),
-        child: Column(children: [
-          ViewAllItemWidget(
-            onTap: () {},
-          ),
-          const ChooseCategoryTitleWidget(),
-          CardListWidget(onPress: () {}),
-        ]),
-      ),
+          padding: const EdgeInsets.only(top: 10.0, right: 15.0, left: 15.0),
+          child: Column(children: [
+            ViewAllItemWidget(onTap: () {}),
+            const ChooseCategoryTitleWidget(),
+            CardListWidget(
+              onPress: () => Navigator.push(context,
+                  onGenerateRoute(const RouteSettings(name: catalogPageRoute))),
+            ),
+          ])),
       bottomNavigationBar: BottomNavigationBar(
         items: bottomBarItems,
         onTap: _onItemTapped,

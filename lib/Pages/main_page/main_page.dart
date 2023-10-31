@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter1/routes/router_names.dart';
 
 import '../../BackEndCategories/CategoriesBackEnd.dart';
 import '../../Componant/ButtonWidget.dart';
+import '../../routes/router.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -93,12 +95,18 @@ class _MainPageState extends State<MainPage> {
                               )
                             ],
                           ),
-                          Text(
-                            titleCategory[i].buttonTitle,
-                            style: const TextStyle(
-                                color: Colors.grey,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 11.0),
+                          GestureDetector(
+                            onTap: () => Navigator.push(
+                                context,
+                                onGenerateRoute(const RouteSettings(
+                                    name: categoriesPagesRoute))),
+                            child: Text(
+                              titleCategory[i].buttonTitle,
+                              style: const TextStyle(
+                                  color: Colors.grey,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 11.0),
+                            ),
                           )
                         ],
                       ),

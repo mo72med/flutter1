@@ -22,6 +22,7 @@ class _FiltersListPageState extends State<FiltersListPage> {
           elevation: 5,
           shadowColor: Colors.grey.shade50),
       body: Stack(
+        fit: StackFit.expand,
         children: [
           Column(
             children: [
@@ -72,7 +73,7 @@ class _FiltersListPageState extends State<FiltersListPage> {
               const CheckBoxTile(checkBoxTitle: 's.Oliver'),
             ],
           ),
-          const BottomButton()
+          Positioned(bottom: 0.0, child: const BottomButton())
         ],
       ),
     );
@@ -143,7 +144,9 @@ class BottomButton extends StatelessWidget {
               width: 160.0,
               height: 36,
               title: 'Apply',
-              ontap: () {},
+              ontap: () {
+                Navigator.pop(context);
+              },
             )
           ],
         ),

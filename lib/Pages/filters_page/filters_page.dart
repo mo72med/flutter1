@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter1/routes/router_names.dart';
 
 import '../../Componant/BackArrowWidget.dart';
 import '../../Componant/ButtonWidget.dart';
+import '../../routes/router.dart';
 
 class FiltersPage extends StatefulWidget {
   const FiltersPage({super.key});
@@ -68,7 +70,10 @@ class _FiltersPageState extends State<FiltersPage> {
                 ),
                 IconButton(
                   icon: const Icon(Icons.arrow_forward_ios),
-                  onPressed: () {},
+                  onPressed: () => Navigator.push(
+                      context,
+                      onGenerateRoute(
+                          const RouteSettings(name: filtersListPageRoute))),
                 )
               ],
             ),
@@ -112,7 +117,9 @@ class BottomButton extends StatelessWidget {
               width: 160.0,
               height: 36,
               title: 'Apply',
-              ontap: () {},
+              ontap: () {
+                Navigator.pop(context);
+              },
             )
           ],
         ),
