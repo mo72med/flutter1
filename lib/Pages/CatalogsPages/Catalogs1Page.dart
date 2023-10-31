@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter1/routes/router_names.dart';
 
 import '../../BackEndCategories/CategoriesBackEnd.dart';
 import '../../Componant/BackArrowWidget.dart';
+import '../../routes/router.dart';
 
 class CatalogPage extends StatefulWidget {
   const CatalogPage({super.key});
@@ -161,7 +163,11 @@ class _FiltersBarWidgetState extends State<FiltersBarWidget> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         FiltersTabItemWidget(
-            icon: Icons.filter_list_sharp, text: 'filter', onPressed: () {}),
+          icon: Icons.filter_list_sharp,
+          text: 'filter',
+          onPressed: () => Navigator.push(context,
+              onGenerateRoute(const RouteSettings(name: filtersPageRoute))),
+        ),
         FiltersTabItemWidget(
             icon: Icons.swap_vert_outlined,
             text: titleOption,
@@ -393,18 +399,24 @@ class GridViewCardWidget extends StatelessWidget {
           crossAxisCount: 2,
         ),
         itemBuilder: (context, index) {
-          return Padding(
-            padding: const EdgeInsets.all(5.0),
-            child: Card(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8.0)),
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      ImageGridItemCardWidget(index: index),
-                      const TitleGridItemCardWidget()
-                    ])),
+          return GestureDetector(
+            onTap: () => Navigator.push(
+                context,
+                onGenerateRoute(
+                    const RouteSettings(name: productCardPageRoute))),
+            child: Padding(
+              padding: const EdgeInsets.all(5.0),
+              child: Card(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8.0)),
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        ImageGridItemCardWidget(index: index),
+                        const TitleGridItemCardWidget(),
+                      ])),
+            ),
           );
         });
   }
@@ -477,20 +489,26 @@ class ListViewCardWidget extends StatelessWidget {
     return ListView.builder(
         itemCount: womanCategoriesId.length,
         itemBuilder: (context, index) {
-          return Padding(
-            padding: const EdgeInsets.only(top: 10.0),
-            child: Stack(
-              alignment: AlignmentDirectional.bottomEnd,
-              children: [
-                Card(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8.0)),
-                    child: Row(children: [
-                      ImageListItemCardWidget(index: index),
-                      const TitleListItemCardWidget()
-                    ])),
-                const FavoriteItemCardWidget(),
-              ],
+          return GestureDetector(
+            onTap: () => Navigator.push(
+                context,
+                onGenerateRoute(
+                    const RouteSettings(name: productCardPageRoute))),
+            child: Padding(
+              padding: const EdgeInsets.only(top: 10.0),
+              child: Stack(
+                alignment: AlignmentDirectional.bottomEnd,
+                children: [
+                  Card(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8.0)),
+                      child: Row(children: [
+                        ImageListItemCardWidget(index: index),
+                        const TitleListItemCardWidget()
+                      ])),
+                  const FavoriteItemCardWidget(),
+                ],
+              ),
             ),
           );
         });

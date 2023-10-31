@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 
 import '../../Componant/BackArrowWidget.dart';
 
-class RatingAndReview extends StatefulWidget {
-  const RatingAndReview({super.key});
+class RatingAndReviewPage extends StatefulWidget {
+  const RatingAndReviewPage({super.key});
 
   @override
-  State<RatingAndReview> createState() => _RatingAndReviewState();
+  State<RatingAndReviewPage> createState() => _RatingAndReviewPageState();
 }
 
-class _RatingAndReviewState extends State<RatingAndReview> {
+class _RatingAndReviewPageState extends State<RatingAndReviewPage> {
   final String _rating = '4.3';
   bool checkBoxValue = false;
   final List<Widget> _starRate = const [

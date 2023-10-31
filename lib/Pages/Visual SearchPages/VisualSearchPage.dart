@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter1/routes/router_names.dart';
+
 import '../../Componant/BackArrowWidget.dart';
 import '../../Componant/ButtonWidget.dart';
+import '../../routes/router.dart';
 
 class VisualSearchPage extends StatelessWidget {
   const VisualSearchPage({super.key});
@@ -23,9 +26,12 @@ class VisualSearchPage extends StatelessWidget {
           Container(
             width: Size.infinite.width,
             color: Colors.white,
-            child: Image.asset(
-              'assets/images/image.png',
-              fit: BoxFit.cover,
+            child: Expanded(
+              child: Image.asset(
+                height: MediaQuery.of(context).size.height,
+                'assets/images/visualSearch.png',
+                fit: BoxFit.cover,
+              ),
             ),
           ),
           Padding(
@@ -41,7 +47,10 @@ class VisualSearchPage extends StatelessWidget {
                   ButtonWidget(
                     title: 'TAKE A PHOTO',
                     buttonBorder: false,
-                    ontap: () {},
+                    ontap: () => Navigator.push(
+                        context,
+                        onGenerateRoute(
+                            const RouteSettings(name: takingPhotoPageRoute))),
                   ),
                   const SizedBox(height: 15.0),
                   ButtonWidget(

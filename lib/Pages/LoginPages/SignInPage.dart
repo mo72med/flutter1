@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter1/routes/router_names.dart';
+
 import '../../Componant/BackArrowWidget.dart';
 import '../../Componant/ButtonWidget.dart';
 import '../../Componant/textFormFieldWidget.dart';
+import '../../routes/router.dart';
 
 class SignInPage extends StatelessWidget {
   const SignInPage({super.key});
@@ -28,7 +31,12 @@ class SignInPage extends StatelessWidget {
               TextFieldWidget(hint: 'Password'),
               const ForgotButtonWidget(),
               const SizedBox(height: 30.0),
-              ButtonWidget(title: 'LOGIN', buttonBorder: false, ontap: () {}),
+              ButtonWidget(
+                title: 'LOGIN',
+                buttonBorder: false,
+                ontap: () => Navigator.push(context,
+                    onGenerateRoute(const RouteSettings(name: mainPageRoute))),
+              ),
               const SizedBox(height: 50.0),
               const Text('Or sign up with social account'),
               const SocialSignInWidget()
@@ -77,7 +85,8 @@ class ForgotButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextButton(
-        onPressed: () {},
+        onPressed: () => Navigator.push(context,
+            onGenerateRoute(const RouteSettings(name: forgotPageRoute))),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: const [

@@ -1,0 +1,26 @@
+const String signInPageRoute = 'signIn_Page';
+const String signUpPageRoute = 'signUp_Page';
+const String forgotPageRoute = 'forgot_Page';
+const String mainPageRoute = 'main_Page';
+const String filtersListPageRoute = 'filters_list_page';
+const String filtersPageRoute = 'filters_page';
+const String categories2PagesRoute = 'categories_2_page';
+const String categoriesPagesRoute = 'categories_Pages_page';
+const String catalogPageRoute = 'catalog_page';
+const String addShippingAddressPageRoute = 'add_shipping_address_page';
+const String checkOutPageRoute = 'check_out_page';
+const String myBagPageRoute = 'my_bag_page';
+const String paymentMethodPageRoute = 'payment_method_page';
+const String shoppingAddressPageRoute = 'shopping_address_page';
+const String successPageRoute = 'success_page';
+
+const String productCardPageRoute = 'product_card_page';
+const String myOrderPageRoute = 'my_order_page';
+const String myProfilePageRoute = 'my_profile_page';
+const String orderDetailsPageRoute = 'order_details_page';
+const String settingPageRoute = 'setting_page';
+const String ratingAndReviewPageRoute = 'rating_and_review_page';
+const String cropTheItemPageRoute = 'crop_the_item_page';
+const String findingPageRoute = 'finding_page';
+const String takingPhotoPageRoute = 'taking_photo_page';
+const String visualSearchPageRoute = 'visual_search_page';

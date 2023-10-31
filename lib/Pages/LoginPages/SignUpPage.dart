@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+
 import '../../Componant/BackArrowWidget.dart';
 import '../../Componant/ButtonWidget.dart';
 import '../../Componant/textFormFieldWidget.dart';
+import '../../routes/router.dart';
+import '../../routes/router_names.dart';
 
 class SignupPage extends StatelessWidget {
   const SignupPage({super.key});
@@ -82,7 +85,8 @@ class TextButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextButton(
-        onPressed: () {},
+        onPressed: () => Navigator.push(context,
+            onGenerateRoute(const RouteSettings(name: signInPageRoute))),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: const [

@@ -129,7 +129,9 @@ class _ProductCardPageState extends State<ProductCardPage> {
                 width: 375.0,
                 height: 48,
                 title: 'ADD TO CART',
-                ontap: () {},
+                ontap: () {
+                  Navigator.pop(context);
+                },
               ),
             ),
           ),

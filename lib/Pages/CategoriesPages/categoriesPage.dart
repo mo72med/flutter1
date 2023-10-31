@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter1/routes/router_names.dart';
 
 import '../../BackEndCategories/CategoriesBackEnd.dart';
 import '../../Componant/BackArrowWidget.dart';
+import '../../routes/router.dart';
 
 class CategoriesPages extends StatefulWidget {
   const CategoriesPages({super.key});
@@ -121,15 +123,17 @@ class CardListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 400,
-      width: 400,
-      child: ListView.builder(
-          itemCount: womanCategoriesId.length,
-          itemBuilder: (context, index) {
-            return CardItemWidget(index: index);
-          }),
-    );
+    return ListView.builder(
+        shrinkWrap: true,
+        itemCount: womanCategoriesId.length,
+        itemBuilder: (context, index) {
+          return GestureDetector(
+              onTap: () => Navigator.push(
+                  context,
+                  onGenerateRoute(
+                      const RouteSettings(name: categories2PagesRoute))),
+              child: CardItemWidget(index: index));
+        });
   }
 }
 

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class MyBag extends StatefulWidget {
-  const MyBag({super.key});
+class MyBagPage extends StatefulWidget {
+  const MyBagPage({super.key});
 
   @override
-  State<MyBag> createState() => _MyBagState();
+  State<MyBagPage> createState() => _MyBagPageState();
 }
 
-class _MyBagState extends State<MyBag> {
+class _MyBagPageState extends State<MyBagPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
