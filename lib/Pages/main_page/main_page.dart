@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter1/routes/router_names.dart';
 
 import '../../BackEndCategories/CategoriesBackEnd.dart';
 import '../../Componant/ButtonWidget.dart';
-import '../../routes/router.dart';
+import '../decision_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -13,129 +12,108 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  int _onSelectedItem = 0;
-  List<BottomNavigationBarItem> bottomBarItems = const [
-    BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-    BottomNavigationBarItem(icon: Icon(Icons.shopping_cart), label: 'Shop'),
-    BottomNavigationBarItem(icon: Icon(Icons.shopping_basket), label: 'Bag'),
-    BottomNavigationBarItem(
-        icon: Icon(Icons.favorite_border), label: 'Favorites'),
-    BottomNavigationBarItem(
-        icon: Icon(Icons.person_2_outlined), label: 'Profile'),
-  ];
-  void _onItemTapped(int index) {
-    setState(() {
-      _onSelectedItem = index;
-      print(_onSelectedItem);
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: SingleChildScrollView(
-          child: Column(
+      bottomNavigationBar: BottomNavigationBarPage(onSelectedItem: 0),
+      body: const MainPageWidget(),
+    );
+  }
+}
+
+class MainPageWidget extends StatelessWidget {
+  const MainPageWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          Stack(
             children: [
-              Stack(
-                children: [
-                  Image.asset(
-                      height: 536,
-                      width: MediaQuery.of(context).size.width,
-                      'assets/images/twogirles.png',
-                      fit: BoxFit.cover),
-                  const Positioned(
-                      top: 334,
-                      left: 15,
-                      child: Text(
-                        'Fashion \nsale',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 48.0),
-                      )),
-                  Positioned(
-                    top: 468,
-                    left: 10,
-                    child: ButtonWidget(
-                      title: 'check',
-                      ontap: () {},
-                      width: 160,
-                    ),
-                  ),
-                ],
+              Image.asset(
+                  height: 536,
+                  width: MediaQuery.of(context).size.width,
+                  'assets/images/twogirles.png',
+                  fit: BoxFit.cover),
+              const Positioned(
+                  top: 334,
+                  left: 15,
+                  child: Text(
+                    'Fashion \nsale',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 48.0),
+                  )),
+              Positioned(
+                top: 468,
+                left: 10,
+                child: ButtonWidget(
+                  title: 'check',
+                  ontap: () {},
+                  width: 160,
+                ),
               ),
-              const SizedBox(height: 10.0),
-              ListView.separated(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                separatorBuilder: (_, i) => const SizedBox(height: 15.0),
-                itemCount: 2,
-                itemBuilder: (_, i) => Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 15.0, vertical: 10),
-                  child: Column(
+            ],
+          ),
+          const SizedBox(height: 10.0),
+          ListView.separated(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            separatorBuilder: (_, i) => const SizedBox(height: 15.0),
+            itemCount: 2,
+            itemBuilder: (_, i) => Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                titleCategory[i].mainTitle,
-                                style: const TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 34.0),
-                              ),
-                              Text(
-                                titleCategory[i].subTitle,
-                                style: const TextStyle(
-                                    color: Colors.grey, fontSize: 11.0),
-                              )
-                            ],
+                          Text(
+                            titleCategory[i].mainTitle,
+                            style: const TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 34.0),
                           ),
-                          GestureDetector(
-                            onTap: () => Navigator.push(
-                                context,
-                                onGenerateRoute(const RouteSettings(
-                                    name: categoriesPagesRoute))),
-                            child: Text(
-                              titleCategory[i].buttonTitle,
-                              style: const TextStyle(
-                                  color: Colors.grey,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 11.0),
-                            ),
+                          Text(
+                            titleCategory[i].subTitle,
+                            style: const TextStyle(
+                                color: Colors.grey, fontSize: 11.0),
                           )
                         ],
                       ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * .35,
-                        child: ListView.separated(
-                            scrollDirection: Axis.horizontal,
-                            itemBuilder: (_, i) => CardItemWidget(index: i),
-                            separatorBuilder: (_, i) =>
-                                const SizedBox(width: 10.0),
-                            itemCount: 3),
-                      ),
+                      Text(
+                        titleCategory[i].buttonTitle,
+                        style: const TextStyle(
+                            color: Colors.grey,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 11.0),
+                      )
                     ],
                   ),
-                ),
-              )
-            ],
-          ),
-        ),
-        bottomNavigationBar: BottomNavigationBar(
-          items: bottomBarItems,
-          onTap: _onItemTapped,
-          currentIndex: _onSelectedItem,
-          selectedItemColor: const Color(0xffDB3022),
-          unselectedItemColor: Colors.grey,
-          iconSize: 35.0,
-          unselectedLabelStyle: const TextStyle(color: Colors.grey),
-          showUnselectedLabels: true,
-        ));
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * .35,
+                    child: ListView.separated(
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (_, i) => CardItemWidget(index: i),
+                        separatorBuilder: (_, i) => const SizedBox(width: 10.0),
+                        itemCount: 3),
+                  ),
+                ],
+              ),
+            ),
+          )
+        ],
+      ),
+    );
   }
 }
 

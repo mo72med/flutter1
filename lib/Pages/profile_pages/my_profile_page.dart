@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter1/routes/router_names.dart';
+
+import '../../routes/router.dart';
+import '../decision_page.dart';
 
 class MyProfilePage extends StatelessWidget {
   const MyProfilePage({super.key});
@@ -6,6 +10,7 @@ class MyProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: BottomNavigationBarPage(onSelectedItem: 4),
       appBar: AppBar(
         backgroundColor: const Color(0xfff5fefd),
         actions: [
@@ -54,9 +59,11 @@ class MyProfilePage extends StatelessWidget {
             ),
             const SizedBox(height: 15.0),
             ListItemProfileWidget(
-                title: 'My orders',
-                subtitle: 'Already have 12 orders',
-                onTap: () {}),
+              title: 'My orders',
+              subtitle: 'Already have 12 orders',
+              onTap: () => Navigator.push(context,
+                  onGenerateRoute(const RouteSettings(name: myOrderPageRoute))),
+            ),
             ListItemProfileWidget(
                 title: 'Shipping addresses',
                 subtitle: '3 ddresses',
@@ -72,9 +79,11 @@ class MyProfilePage extends StatelessWidget {
                 subtitle: 'Reviews for 4 items',
                 onTap: () {}),
             ListItemProfileWidget(
-                title: 'Settings',
-                subtitle: 'Notifications, password',
-                onTap: () {}),
+              title: 'Settings',
+              subtitle: 'Notifications, password',
+              onTap: () => Navigator.push(context,
+                  onGenerateRoute(const RouteSettings(name: settingPageRoute))),
+            ),
           ],
         ),
       ),

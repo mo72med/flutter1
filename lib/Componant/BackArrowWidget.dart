@@ -10,7 +10,7 @@ class BackArrowWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      onPressed: ontap,
+      onPressed: () => Navigator.pop(context),
       icon: const Icon(
         Icons.arrow_back_ios,
         size: 24.0,

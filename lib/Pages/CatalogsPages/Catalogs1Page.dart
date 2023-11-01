@@ -4,6 +4,7 @@ import 'package:flutter1/routes/router_names.dart';
 import '../../BackEndCategories/CategoriesBackEnd.dart';
 import '../../Componant/BackArrowWidget.dart';
 import '../../routes/router.dart';
+import '../decision_page.dart';
 
 class CatalogPage extends StatefulWidget {
   const CatalogPage({super.key});
@@ -13,25 +14,7 @@ class CatalogPage extends StatefulWidget {
 }
 
 class _CatalogPageState extends State<CatalogPage> {
-  int _onSelectedItem = 0;
   View view = View.grid;
-
-  List<BottomNavigationBarItem> bottomBarItems = const [
-    BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-    BottomNavigationBarItem(icon: Icon(Icons.shopping_cart), label: 'Shop'),
-    BottomNavigationBarItem(icon: Icon(Icons.shopping_basket), label: 'Bag'),
-    BottomNavigationBarItem(
-        icon: Icon(Icons.favorite_border), label: 'Favorites'),
-    BottomNavigationBarItem(
-        icon: Icon(Icons.person_2_outlined), label: 'Profile'),
-  ];
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _onSelectedItem = index;
-      print(_onSelectedItem);
-    });
-  }
 
   void _onMenuTapped() {
     setState(() {
@@ -45,6 +28,7 @@ class _CatalogPageState extends State<CatalogPage> {
       length: 4,
       child: Scaffold(
         backgroundColor: const Color(0xfff5fefd),
+        bottomNavigationBar: BottomNavigationBarPage(onSelectedItem: 1),
         appBar: AppBar(
           backgroundColor: Colors.white,
           leading: BackArrowWidget(ontap: () {}),
@@ -60,7 +44,7 @@ class _CatalogPageState extends State<CatalogPage> {
                   children: [
                     const AppBarTitleWidget(),
                     const TabBarListWidget(),
-                    FiltersBarWidget(toggleFunction: _onMenuTapped),
+                    FiltersBarWidget(toggleFunction: _onMenuTapped, view: view),
                   ],
                 ),
               )),
@@ -71,16 +55,6 @@ class _CatalogPageState extends State<CatalogPage> {
               view: view,
             )
           ],
-        ),
-        bottomNavigationBar: BottomNavigationBar(
-          items: bottomBarItems,
-          onTap: _onItemTapped,
-          currentIndex: _onSelectedItem,
-          selectedItemColor: const Color(0xffDB3022),
-          unselectedItemColor: Colors.grey,
-          iconSize: 35.0,
-          unselectedLabelStyle: const TextStyle(color: Colors.grey),
-          showUnselectedLabels: true,
         ),
       ),
     );
@@ -114,9 +88,11 @@ class TapBarViewWidget extends StatelessWidget {
 
 class HeaderWidget extends StatelessWidget {
   final VoidCallback toggleFunction;
+  final View view;
   const HeaderWidget({
     super.key,
     required this.toggleFunction,
+    required this.view,
   });
 
   @override
@@ -128,7 +104,7 @@ class HeaderWidget extends StatelessWidget {
         children: [
           const AppBarTitleWidget(),
           const TabBarListWidget(),
-          FiltersBarWidget(toggleFunction: toggleFunction),
+          FiltersBarWidget(toggleFunction: toggleFunction, view: view),
         ],
       ),
     );
@@ -137,10 +113,11 @@ class HeaderWidget extends StatelessWidget {
 
 class FiltersBarWidget extends StatefulWidget {
   final VoidCallback toggleFunction;
-
+  final View view;
   const FiltersBarWidget({
     super.key,
     required this.toggleFunction,
+    required this.view,
   });
 
   @override
@@ -156,7 +133,7 @@ class _FiltersBarWidgetState extends State<FiltersBarWidget> {
     'Price: highest to low'
   ];
   String titleOption = 'Popular';
-
+  View view = View.grid;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -203,7 +180,7 @@ class _FiltersBarWidgetState extends State<FiltersBarWidget> {
                       ),
                     )).then((value) => setState(() => titleOption = value))),
         FiltersTabItemWidget(
-            icon: Icons.apps_sharp,
+            icon: widget.view == View.list ? Icons.apps_sharp : Icons.list,
             text: ' ',
             onPressed: widget.toggleFunction),
       ],

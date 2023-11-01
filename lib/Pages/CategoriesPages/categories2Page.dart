@@ -5,6 +5,7 @@ import '../../BackEndCategories/CategoriesBackEnd.dart';
 import '../../Componant/BackArrowWidget.dart';
 import '../../Componant/ButtonWidget.dart';
 import '../../routes/router.dart';
+import '../decision_page.dart';
 
 class Categories2Pages extends StatefulWidget {
   const Categories2Pages({super.key});
@@ -14,26 +15,10 @@ class Categories2Pages extends StatefulWidget {
 }
 
 class _Categories2PagesState extends State<Categories2Pages> {
-  int _onSelectedItem = 0;
-  List<BottomNavigationBarItem> bottomBarItems = const [
-    BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-    BottomNavigationBarItem(icon: Icon(Icons.shopping_cart), label: 'Shop'),
-    BottomNavigationBarItem(icon: Icon(Icons.shopping_basket), label: 'Bag'),
-    BottomNavigationBarItem(
-        icon: Icon(Icons.favorite_border), label: 'Favorites'),
-    BottomNavigationBarItem(
-        icon: Icon(Icons.person_2_outlined), label: 'Profile'),
-  ];
-  void _onItemTapped(int index) {
-    setState(() {
-      _onSelectedItem = index;
-      print(_onSelectedItem);
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: BottomNavigationBarPage(onSelectedItem: 1),
       backgroundColor: const Color(0xfff5fefd),
       appBar: AppBar(
         elevation: 0.0,
@@ -53,16 +38,6 @@ class _Categories2PagesState extends State<Categories2Pages> {
                   onGenerateRoute(const RouteSettings(name: catalogPageRoute))),
             ),
           ])),
-      bottomNavigationBar: BottomNavigationBar(
-        items: bottomBarItems,
-        onTap: _onItemTapped,
-        currentIndex: _onSelectedItem,
-        selectedItemColor: const Color(0xffDB3022),
-        unselectedItemColor: Colors.grey,
-        iconSize: 35.0,
-        unselectedLabelStyle: const TextStyle(color: Colors.grey),
-        showUnselectedLabels: true,
-      ),
     );
   }
 }

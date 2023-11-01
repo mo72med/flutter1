@@ -103,7 +103,6 @@ class _RatingAndReviewPageState extends State<RatingAndReviewPage> {
                               height: 104.0,
                               width: 104.0,
                               decoration: BoxDecoration(
-                                  color: Colors.grey,
                                   borderRadius: BorderRadius.circular(10.0)),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -115,7 +114,10 @@ class _RatingAndReviewPageState extends State<RatingAndReviewPage> {
                                         color: const Color(0xffDB3022),
                                         borderRadius:
                                             BorderRadius.circular(100.0)),
-                                    child: const Icon(Icons.camera_alt_rounded),
+                                    child: const Icon(
+                                      Icons.camera_alt_rounded,
+                                      color: Colors.white,
+                                    ),
                                   ),
                                   const Padding(
                                     padding: EdgeInsets.all(8.0),
@@ -132,18 +134,21 @@ class _RatingAndReviewPageState extends State<RatingAndReviewPage> {
                         ),
                       ),
                       const SizedBox(height: 15.0),
-                      Container(
-                        alignment: Alignment.center,
-                        height: 48.0,
-                        width: 343.0,
-                        decoration: BoxDecoration(
-                            color: const Color(0xffDB3022),
-                            borderRadius: BorderRadius.circular(50.0)),
-                        child: const Text('SEND REVIEW',
-                            style: TextStyle(
-                              fontSize: 18.0,
-                              color: Colors.white,
-                            )),
+                      GestureDetector(
+                        onTap: () => setState(() => Navigator.pop(context)),
+                        child: Container(
+                          alignment: Alignment.center,
+                          height: 48.0,
+                          width: 343.0,
+                          decoration: BoxDecoration(
+                              color: const Color(0xffDB3022),
+                              borderRadius: BorderRadius.circular(50.0)),
+                          child: const Text('SEND REVIEW',
+                              style: TextStyle(
+                                fontSize: 18.0,
+                                color: Colors.white,
+                              )),
+                        ),
                       )
                     ],
                   ),

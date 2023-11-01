@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../decision_page.dart';
+
 class MyBagPage extends StatefulWidget {
   const MyBagPage({super.key});
 
@@ -12,6 +14,7 @@ class _MyBagPageState extends State<MyBagPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xfff5fefd),
+      bottomNavigationBar: BottomNavigationBarPage(onSelectedItem: 2),
       appBar: AppBar(
           backgroundColor: const Color(0xfff5fefd),
           elevation: 0.0,
@@ -35,7 +38,7 @@ class _MyBagPageState extends State<MyBagPage> {
               PromoCodeBarWidget(),
               SizedBox(height: 15.0),
               TotalAmountBarWidget(),
-              SizedBox(height: 50.0),
+              SizedBox(height: 30.0),
               CheckOutBarWidget()
             ],
           ),
