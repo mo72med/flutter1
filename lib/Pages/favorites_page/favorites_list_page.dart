@@ -6,14 +6,14 @@ import '../../Componant/BackArrowWidget.dart';
 import '../../routes/router.dart';
 import '../decision_page.dart';
 
-class CatalogPage extends StatefulWidget {
-  const CatalogPage({super.key});
+class FavoritesListPage extends StatefulWidget {
+  const FavoritesListPage({super.key});
 
   @override
-  State<CatalogPage> createState() => _CatalogPageState();
+  State<FavoritesListPage> createState() => _FavoritesListPageState();
 }
 
-class _CatalogPageState extends State<CatalogPage> {
+class _FavoritesListPageState extends State<FavoritesListPage> {
   View view = View.grid;
 
   void _onMenuTapped() {
@@ -28,7 +28,7 @@ class _CatalogPageState extends State<CatalogPage> {
       length: 4,
       child: Scaffold(
         backgroundColor: const Color(0xfff5fefd),
-        bottomNavigationBar: BottomNavigationBarPage(onSelectedItem: 1),
+        bottomNavigationBar: BottomNavigationBarPage(onSelectedItem: 3),
         appBar: AppBar(
           backgroundColor: Colors.white,
           leading: BackArrowWidget(ontap: () {}),
@@ -296,7 +296,7 @@ class AppBarTitleWidget extends StatelessWidget {
     return Row(
       children: const [
         Text(
-          'Women’s tops',
+          'Favorites',
           style: TextStyle(
               fontSize: 34.0, color: Colors.black, fontWeight: FontWeight.bold),
         ),
@@ -376,24 +376,18 @@ class GridViewCardWidget extends StatelessWidget {
           crossAxisCount: 2,
         ),
         itemBuilder: (context, index) {
-          return GestureDetector(
-            onTap: () => Navigator.push(
-                context,
-                onGenerateRoute(
-                    const RouteSettings(name: productCardPageRoute))),
-            child: Padding(
-              padding: const EdgeInsets.all(5.0),
-              child: Card(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8.0)),
-                  child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        ImageGridItemCardWidget(index: index),
-                        const TitleGridItemCardWidget(),
-                      ])),
-            ),
+          return Padding(
+            padding: const EdgeInsets.all(5.0),
+            child: Card(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.0)),
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      ImageGridItemCardWidget(index: index),
+                      const TitleGridItemCardWidget(),
+                    ])),
           );
         });
   }
@@ -425,6 +419,15 @@ class ImageGridItemCardWidget extends StatelessWidget {
             bottom: 0.0,
             right: 0.0,
             child: FavoriteItemCardWidget(),
+          ),
+          const Positioned(
+            top: 0.0,
+            right: 0.0,
+            child: Icon(
+              Icons.close,
+              color: Color(0xff9B9B9B),
+              size: 20.0,
+            ),
           )
         ],
       ),
@@ -466,26 +469,29 @@ class ListViewCardWidget extends StatelessWidget {
     return ListView.builder(
         itemCount: womanCategoriesId.length,
         itemBuilder: (context, index) {
-          return GestureDetector(
-            onTap: () => Navigator.push(
-                context,
-                onGenerateRoute(
-                    const RouteSettings(name: productCardPageRoute))),
-            child: Padding(
-              padding: const EdgeInsets.only(top: 10.0),
-              child: Stack(
-                alignment: AlignmentDirectional.bottomEnd,
-                children: [
-                  Card(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8.0)),
-                      child: Row(children: [
-                        ImageListItemCardWidget(index: index),
-                        const TitleListItemCardWidget()
-                      ])),
-                  const FavoriteItemCardWidget(),
-                ],
-              ),
+          return Padding(
+            padding: const EdgeInsets.only(top: 10.0, left: 5.0, right: 5.0),
+            child: Stack(
+              alignment: AlignmentDirectional.bottomEnd,
+              children: [
+                Card(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.0)),
+                    child: Row(children: [
+                      ImageListItemCardWidget(index: index),
+                      const TitleListItemCardWidget()
+                    ])),
+                const FavoriteItemCardWidget(),
+                const Positioned(
+                  top: 0.0,
+                  right: 0.0,
+                  child: Icon(
+                    Icons.close,
+                    color: Color(0xff9B9B9B),
+                    size: 20.0,
+                  ),
+                )
+              ],
             ),
           );
         });
@@ -556,7 +562,7 @@ class FavoriteItemCardWidget extends StatelessWidget {
         width: 36.0,
         alignment: Alignment.center,
         decoration: BoxDecoration(
-            color: Colors.white,
+            color: const Color(0xffDB3022),
             shape: BoxShape.circle,
             boxShadow: [
               BoxShadow(
@@ -566,8 +572,8 @@ class FavoriteItemCardWidget extends StatelessWidget {
               )
             ]),
         child: const Icon(
-          Icons.favorite,
-          color: Color(0xffDB3022),
+          Icons.shopping_basket_sharp,
+          color: Colors.white,
           size: 20.0,
         ));
   }

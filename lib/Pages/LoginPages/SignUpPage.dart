@@ -35,7 +35,10 @@ class SignupPage extends StatelessWidget {
               ButtonWidget(
                 title: 'SIGNUP',
                 buttonBorder: false,
-                ontap: () {},
+                ontap: () => Navigator.push(
+                    context,
+                    onGenerateRoute(
+                        const RouteSettings(name: signInPageRoute))),
               ),
               const SizedBox(height: 30.0),
               const Text('Or sign up with social account'),

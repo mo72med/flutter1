@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter1/Componant/ButtonWidget.dart';
+import 'package:flutter1/routes/router_names.dart';
+
+import '../../routes/router.dart';
 
 class SuccessPage extends StatelessWidget {
   const SuccessPage({super.key});
@@ -50,7 +53,10 @@ class SuccessFirstModeWidget extends StatelessWidget {
                   height: 36.0,
                   width: 160,
                   title: 'Continue shopping',
-                  ontap: () {},
+                  ontap: () => Navigator.push(
+                      context,
+                      onGenerateRoute(
+                          const RouteSettings(name: mainPageRoute))),
                 )
               ],
             ),
@@ -104,7 +110,8 @@ class SuccessSecondModeWidget extends StatelessWidget {
                 height: 36.0,
                 width: 160,
                 title: 'Continue shopping',
-                ontap: () {},
+                ontap: () => Navigator.push(context,
+                    onGenerateRoute(const RouteSettings(name: mainPageRoute))),
               )
             ],
           ),

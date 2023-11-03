@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter1/Componant/ButtonWidget.dart';
+import 'package:flutter1/routes/router_names.dart';
 
 import '../../Componant/BackArrowWidget.dart';
+import '../../routes/router.dart';
+import '../decision_page.dart';
 
 class MyOrderPage extends StatelessWidget {
   const MyOrderPage({super.key});
@@ -12,6 +15,7 @@ class MyOrderPage extends StatelessWidget {
       length: 3,
       child: Scaffold(
         backgroundColor: const Color(0xfff5fefd),
+        bottomNavigationBar: BottomNavigationBarPage(onSelectedItem: 4),
         appBar: AppBar(
           backgroundColor: Colors.white,
           leading: BackArrowWidget(ontap: () {}),
@@ -136,7 +140,10 @@ class CardItemListWidget extends StatelessWidget {
                     width: 98.0,
                     height: 36.0,
                     title: 'Details',
-                    ontap: () {},
+                    ontap: () => Navigator.push(
+                        context,
+                        onGenerateRoute(
+                            const RouteSettings(name: orderDetailsPageRoute))),
                     buttonBorder: true,
                     color: Colors.white,
                     colorText: Colors.black,

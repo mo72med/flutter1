@@ -4,6 +4,7 @@ import 'package:flutter1/routes/router_names.dart';
 import '../../BackEndCategories/CategoriesBackEnd.dart';
 import '../../Componant/BackArrowWidget.dart';
 import '../../routes/router.dart';
+import '../decision_page.dart';
 
 class CategoriesPages extends StatefulWidget {
   const CategoriesPages({super.key});
@@ -13,29 +14,13 @@ class CategoriesPages extends StatefulWidget {
 }
 
 class _CategoriesPagesState extends State<CategoriesPages> {
-  int _onSelectedItem = 0;
-  List<BottomNavigationBarItem> bottomBarItems = const [
-    BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-    BottomNavigationBarItem(icon: Icon(Icons.shopping_cart), label: 'Shop'),
-    BottomNavigationBarItem(icon: Icon(Icons.shopping_basket), label: 'Bag'),
-    BottomNavigationBarItem(
-        icon: Icon(Icons.favorite_border), label: 'Favorites'),
-    BottomNavigationBarItem(
-        icon: Icon(Icons.person_2_outlined), label: 'Profile'),
-  ];
-  void _onItemTapped(int index) {
-    setState(() {
-      _onSelectedItem = index;
-      print(_onSelectedItem);
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
         backgroundColor: const Color(0xfff5fefd),
+        bottomNavigationBar: BottomNavigationBarPage(onSelectedItem: 1),
         appBar: AppBar(
           elevation: 0.0,
           backgroundColor: Colors.white,
@@ -49,16 +34,6 @@ class _CategoriesPagesState extends State<CategoriesPages> {
             TabBarWidget(),
             TapBarViewWidget(),
           ],
-        ),
-        bottomNavigationBar: BottomNavigationBar(
-          items: bottomBarItems,
-          onTap: _onItemTapped,
-          currentIndex: _onSelectedItem,
-          selectedItemColor: const Color(0xffDB3022),
-          unselectedItemColor: Colors.grey,
-          iconSize: 35.0,
-          unselectedLabelStyle: const TextStyle(color: Colors.grey),
-          showUnselectedLabels: true,
         ),
       ),
     );

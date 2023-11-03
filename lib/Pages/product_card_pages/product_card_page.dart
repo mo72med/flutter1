@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../Componant/BackArrowWidget.dart';
 import '../../Componant/ButtonWidget.dart';
+import '../../routes/router.dart';
+import '../../routes/router_names.dart';
 
 class ProductCardPage extends StatefulWidget {
   const ProductCardPage({super.key});
@@ -129,9 +131,10 @@ class _ProductCardPageState extends State<ProductCardPage> {
                 width: 375.0,
                 height: 48,
                 title: 'ADD TO CART',
-                ontap: () {
-                  Navigator.pop(context);
-                },
+                ontap: () => Navigator.push(
+                    context,
+                    onGenerateRoute(
+                        const RouteSettings(name: ratingAndReviewPageRoute))),
               ),
             ),
           ),
@@ -329,7 +332,9 @@ class _BottomSheetItemState extends State<BottomSheetItem> {
             width: 375.0,
             height: 48,
             title: 'ADD TO CART',
-            ontap: () {},
+            ontap: () {
+              Navigator.pop(context);
+            },
           ),
         )
       ],

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter1/Pages/favorites_page/favorites_list_page.dart';
 import 'package:flutter1/routes/router_names.dart';
 
 import '../Pages/CatalogsPages/Catalogs1Page.dart';
@@ -106,6 +107,9 @@ Route onGenerateRoute(RouteSettings settings) {
     case visualSearchPageRoute:
       return MaterialPageRoute(
           builder: (context) => const VisualSearchPage(), settings: settings);
+    case favoritesListPageRoute:
+      return MaterialPageRoute(
+          builder: (context) => const FavoritesListPage(), settings: settings);
 
     default:
       return MaterialPageRoute(builder: (context) => const SignInPage());

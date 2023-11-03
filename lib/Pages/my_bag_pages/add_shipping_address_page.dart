@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter1/routes/router_names.dart';
 
 import '../../Componant/BackArrowWidget.dart';
 import '../../Componant/ButtonWidget.dart';
+import '../../routes/router.dart';
 
 class AddShippingAddressPage extends StatelessWidget {
   const AddShippingAddressPage({super.key});
@@ -45,7 +47,10 @@ class AddShippingAddressPage extends StatelessWidget {
               const SizedBox(height: 40.0),
               ButtonWidget(
                 title: 'SAVE ADDRESS',
-                ontap: () => Navigator.pop(context),
+                ontap: () => Navigator.push(
+                    context,
+                    onGenerateRoute(
+                        const RouteSettings(name: successPageRoute))),
               )
             ],
           ),
