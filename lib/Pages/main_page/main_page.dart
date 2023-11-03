@@ -326,11 +326,11 @@ class _BottomSheetItemState extends State<BottomSheetItem> {
             height: 48,
             title: 'ADD TO FAVORITES',
             ontap: () {
+              Navigator.pop(context);
               Navigator.push(
                   context,
                   onGenerateRoute(
                       const RouteSettings(name: favoritesListPageRoute)));
-              Navigator.pop(context);
             },
           ),
         )
