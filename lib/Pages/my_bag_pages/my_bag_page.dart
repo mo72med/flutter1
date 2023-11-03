@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter1/routes/router_names.dart';
 
+import '../../routes/router.dart';
 import '../decision_page.dart';
 
 class MyBagPage extends StatefulWidget {
@@ -55,18 +57,22 @@ class CheckOutBarWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      alignment: Alignment.center,
-      height: 48.0,
-      width: 400.0,
-      decoration: BoxDecoration(
-          color: const Color(0xffDB3022),
-          borderRadius: BorderRadius.circular(30.0)),
-      child: const Text('CHECK OUT',
-          style: TextStyle(
-            fontSize: 18.0,
-            color: Colors.white,
-          )),
+    return GestureDetector(
+      onTap: () => Navigator.push(context,
+          onGenerateRoute(const RouteSettings(name: checkOutPageRoute))),
+      child: Container(
+        alignment: Alignment.center,
+        height: 48.0,
+        width: 400.0,
+        decoration: BoxDecoration(
+            color: const Color(0xffDB3022),
+            borderRadius: BorderRadius.circular(30.0)),
+        child: const Text('CHECK OUT',
+            style: TextStyle(
+              fontSize: 18.0,
+              color: Colors.white,
+            )),
+      ),
     );
   }
 }

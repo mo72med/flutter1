@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter1/routes/router_names.dart';
 
 import '../../Componant/BackArrowWidget.dart';
+import '../../routes/router.dart';
 
 class ShoppingAddressPage extends StatelessWidget {
   const ShoppingAddressPage({super.key});
@@ -39,7 +41,10 @@ class ShoppingAddressPage extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.black,
         mini: true,
-        onPressed: () {},
+        onPressed: () => Navigator.push(
+            context,
+            onGenerateRoute(
+                const RouteSettings(name: addShippingAddressPageRoute))),
         child: const Icon(Icons.add, color: Colors.white),
       ),
     );

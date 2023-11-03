@@ -24,3 +24,4 @@ const String cropTheItemPageRoute = 'crop_the_item_page';
 const String findingPageRoute = 'finding_page';
 const String takingPhotoPageRoute = 'taking_photo_page';
 const String visualSearchPageRoute = 'visual_search_page';
+const String favoritesListPageRoute = 'favorites_list_page';

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter1/Componant/ButtonWidget.dart';
+import 'package:flutter1/routes/router_names.dart';
 
 import '../../Componant/BackArrowWidget.dart';
+import '../../routes/router.dart';
 
 class CheckOutPage extends StatelessWidget {
   const CheckOutPage({super.key});
@@ -133,7 +135,10 @@ class PaymentCardWidget extends StatelessWidget {
                   fontWeight: FontWeight.bold),
             ),
             TextButton(
-              onPressed: () {},
+              onPressed: () => Navigator.push(
+                  context,
+                  onGenerateRoute(
+                      const RouteSettings(name: paymentMethodPageRoute))),
               child: const Text('Change',
                   style: TextStyle(color: Colors.red, fontSize: 14.0)),
             )
@@ -194,7 +199,10 @@ class ShippingAddressCardWidget extends StatelessWidget {
                         style: TextStyle(fontSize: 14.0),
                       ),
                       TextButton(
-                          onPressed: () {},
+                          onPressed: () => Navigator.push(
+                              context,
+                              onGenerateRoute(const RouteSettings(
+                                  name: shoppingAddressPageRoute))),
                           child: const Text(
                             'Change',
                             style: TextStyle(color: Colors.red, fontSize: 14.0),

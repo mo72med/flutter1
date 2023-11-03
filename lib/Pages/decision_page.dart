@@ -17,8 +17,7 @@ class _BottomNavigationBarPageState extends State<BottomNavigationBarPage> {
     BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
     BottomNavigationBarItem(icon: Icon(Icons.shopping_cart), label: 'Shop'),
     BottomNavigationBarItem(icon: Icon(Icons.shopping_basket), label: 'Bag'),
-    BottomNavigationBarItem(
-        icon: Icon(Icons.favorite_border), label: 'Favorites'),
+    BottomNavigationBarItem(icon: Icon(Icons.favorite), label: 'Favorites'),
     BottomNavigationBarItem(
         icon: Icon(Icons.person_2_outlined), label: 'Profile'),
   ];
@@ -40,8 +39,10 @@ class _BottomNavigationBarPageState extends State<BottomNavigationBarPage> {
               onGenerateRoute(const RouteSettings(name: myBagPageRoute)));
           break;
         case 3:
-          Navigator.push(context,
-              onGenerateRoute(const RouteSettings(name: mainPageRoute)));
+          Navigator.push(
+              context,
+              onGenerateRoute(
+                  const RouteSettings(name: favoritesListPageRoute)));
           break;
         case 4:
           Navigator.push(context,
